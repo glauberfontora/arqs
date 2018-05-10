@@ -2,16 +2,56 @@ package br.unibh.loja.entidades;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.persistence.Version;
+
+@Entity
+@Table(
+	name = "tb_produto", 
+	uniqueConstraints = { 
+		@UniqueConstraint(columnNames = { "nome" })
+	}
+)
+
 public class Produto {
+	@Version
+	private Long version;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(length=100, nullable=false)
 	private String nome;
+		
+	@Column(length=4000, nullable=false)
 	private String descricao;
+
 	private Categoria categoria;
+
+	@Column(precision=14, scale=2, nullable=false)
 	private BigDecimal preco;
+	
+	@Column(length=4000, nullable=false)
 	private String fabricante;
+
 	public Long getId() {
 		return id;
 	}
+	
+	public Long getVersion() {
+		return version;
+	}
+	public void setVersion(Long version) {
+		this.version = version;
+	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
