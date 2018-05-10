@@ -10,6 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(
@@ -27,18 +34,31 @@ public class Produto {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotBlank
+	@Size(min=3, max=100)
+	@Pattern(regexp="[A-zÀ-ú.´ ]*", message="Caracteres permitidos: letras, espaços, ponto e aspas simples")
 	@Column(length=100, nullable=false)
 	private String nome;
 		
+	@NotBlank
+	@Size(max=4000)
+	@Pattern(regexp="[A-zÀ-ú.´ \\/\\'\\-]*", message="Caracteres permitidos: letras, espaços, ponto e aspas simples")
 	@Column(length=4000, nullable=false)
 	private String descricao;
 
+	@NotNull
 	private Categoria categoria;
 
+	@NotNull
+	@DecimalMin("0.00")
+	@Digits(integer=14, fraction=2)
 	@Column(precision=14, scale=2, nullable=false)
 	private BigDecimal preco;
 	
-	@Column(length=4000, nullable=false)
+	@NotBlank
+	@Size(max=100)
+	@Pattern(regexp="[A-zÀ-ú.´ ]*", message="Caracteres permitidos: letras, espaços, ponto e aspas simples")
+	@Column(length=100, nullable=false)
 	private String fabricante;
 
 	public Long getId() {

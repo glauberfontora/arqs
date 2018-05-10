@@ -12,6 +12,14 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 @Table(
@@ -31,31 +39,51 @@ public class Cliente {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotBlank
+	@Size(min=3, max=100)
+	@Pattern(regexp="[A-zÀ-ú.´ ]*", message="Caracteres permitidos: letras, espaços, ponto e aspas simples")
 	@Column(length=100, nullable=false)
 	private String nome;
 
+	@NotBlank
+	@Size(min=8, max=15)
+	@Pattern(regexp="[A-Za-z]*", message="Caracteres permitidos: letras")
 	@Column(length=15, nullable=false)
 	private String login;
 	
+	@NotBlank
+	@Size(max=100)
 	@Column(length=100, nullable=false)
 	private String senha;
 
+	@NotBlank
+	@Size(max=100)
+	@Pattern(regexp="[A-Za-z]*", message="Caracteres permitidos: letras")
 	@Column(length=100, nullable=false)
 	private String perfil;
-	
+
+	@NotBlank
+	@CPF
+	@Pattern(regexp="\\d{11}", message="Permite somente números")
 	@Column(length=11, nullable=false)
 	private String cpf;
 	
+	@NotBlank
+	@Pattern(regexp="\\(\\d{2}\\)\\d{0,1}\\d{4}-\\d{4}", message="Fornecer um telefone no formato (99)09999-9999")
 	@Column(length=14, nullable=false)
 	private String telefone;
 	
+	@Email
+	@Size(max=100)
 	@Column(length=100, nullable=false)
 	private String email;
 	
+	@Past( message = "Sua data de nascimento deve ser anterior a data de hoje")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="data_nascimento", nullable=false)
 	private Date dataNascimento;
 	
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="data_cadastro", nullable=false)
 	private Date dataCadastro;
