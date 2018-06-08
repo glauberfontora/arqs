@@ -105,7 +105,7 @@ public class TesteProduto {
 	public void testValidacaoNomeProdutoErrado() {
 		Produto produto = new Produto(
 				1L,
-				"Produto 1",
+				"Produto @",
 				"Descrição do produto",
 				new Categoria(1L, "Blá blá blá"),
 				new BigDecimal(22.00),

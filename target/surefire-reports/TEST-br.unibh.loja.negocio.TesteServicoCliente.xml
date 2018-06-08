@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="5" failures="0" name="br.unibh.loja.entidades.TesteProduto" time="0.032" errors="0" skipped="0">
+<testsuite tests="4" failures="0" name="br.unibh.loja.negocio.TesteServicoCliente" time="0.216" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/jre/lib"/>
@@ -62,9 +62,8 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="br.unibh.loja.entidades.TesteProduto" name="testCompareObjects" time="0.001"/>
-  <testcase classname="br.unibh.loja.entidades.TesteProduto" name="testCreateObject" time="0"/>
-  <testcase classname="br.unibh.loja.entidades.TesteProduto" name="testPrintObject" time="0.001"/>
-  <testcase classname="br.unibh.loja.entidades.TesteProduto" name="testValidacaoNomeProduto" time="0.026"/>
-  <testcase classname="br.unibh.loja.entidades.TesteProduto" name="testValidacaoNomeProdutoErrado" time="0.004"/>
+  <testcase classname="br.unibh.loja.negocio.TesteServicoCliente" name="teste01_inserirSemErro" time="0.126"/>
+  <testcase classname="br.unibh.loja.negocio.TesteServicoCliente" name="teste02_inserirComErro" time="0.028"/>
+  <testcase classname="br.unibh.loja.negocio.TesteServicoCliente" name="teste03_atualizar" time="0.034"/>
+  <testcase classname="br.unibh.loja.negocio.TesteServicoCliente" name="teste04_excluir" time="0.028"/>
 </testsuite>

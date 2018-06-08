@@ -1,0 +1,6 @@
+br/unibh/loja/negocio/TesteServicoProduto.class
+br/unibh/loja/negocio/TesteServicoCliente.class
+br/unibh/loja/negocio/TesteServicoCategoria.class
+br/unibh/loja/entidades/TesteCategoria.class
+br/unibh/loja/entidades/TesteCliente.class
+br/unibh/loja/entidades/TesteProduto.class
